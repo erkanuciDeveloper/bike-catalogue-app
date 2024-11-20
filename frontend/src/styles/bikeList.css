@@ -1,0 +1,113 @@
+/* src/styles/bikeList.css */
+.bike-list-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sort-section {
+    margin-bottom: 20px;
+  }
+  
+  .sort-label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+  
+  .sort-dropdown {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .bike-list {
+    margin-bottom: 30px;
+  }
+  
+  .bike-list-items {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .bike-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .bike-details {
+    flex-grow: 1;
+  }
+  
+  .bike-manufacturer,
+  .bike-model,
+  .bike-price {
+    margin: 5px 0;
+  }
+  
+  .favorite-button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .favorite-button:hover {
+    background-color: #218838;
+  }
+  
+  .add-bike-form {
+    margin-top: 30px;
+  }
+  
+  .add-bike-form h2 {
+    margin-bottom: 15px;
+  }
+  
+  .bike-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-field {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .add-bike-button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .add-bike-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .favorites-section {
+    margin-top: 30px;
+  }
+  
+  .favorites-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .favorite-item {
+    margin: 5px 0;
+  }
+  
+  .no-favorites {
+    color: #888;
+  }
+  

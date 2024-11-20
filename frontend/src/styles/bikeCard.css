@@ -1,0 +1,77 @@
+/* bikeCard.css */
+
+.bike-list {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.bike-list h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.bike-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.bike-card {
+  background-color: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  text-align: left;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.bike-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.bike-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2980b9;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1rem;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+
+.sort-menu {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.sort-menu select {
+  padding: 5px 10px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.bike-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.bike-card img {
+  width: 150px; /* Resmin genişliğini 150px ile sınırladık */
+  height: 150px; /* Resmin yüksekliğini 150px ile sınırladık */
+  object-fit: cover; /* Resmi kutuya sığacak şekilde kesme işlemi yapıyoruz */
+  border-radius: 8px; /* Resme yuvarlatılmış köşeler ekliyoruz */
+  margin-bottom: 15px; /* Resmin altına boşluk ekliyoruz */
+}
