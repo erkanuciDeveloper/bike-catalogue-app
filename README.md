@@ -129,12 +129,3 @@ Example Bike data (for POST request):
 - Price formatting: Ensure the price is provided in `€` format, as the app currently only accepts prices with the euro symbol.
 - MongoDB setup: Ensure that MongoDB is correctly configured and running.
 
-## Contributing
-
-Feel free to fork the repository and submit pull requests for any improvements or bug fixes.
-
----
-
-This README provides an overview of the project, installation steps, and the tech stack you're using (MongoDB, React, Flask), along with details about API usage and sorting options.
-
-Let me know if you'd like further details or modifications!
