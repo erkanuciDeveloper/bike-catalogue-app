@@ -29,11 +29,11 @@ const BikeList = ({ bikes }) => {
     <div className="bike-list">
       <h2>Available Bikes</h2>
       <div className="sort-menu">
-        <label htmlFor="sortOptions">Sırala: </label>
+        <label htmlFor="sortOptions">Order By: </label>
         <select id="sortOptions" onChange={handleSortChange} value={sortOption}>
-          <option value="manufacturer">Üretici adı</option>
-          <option value="lowPrice">En düşük fiyat</option>
-          <option value="highPrice">En yüksek fiyat</option>
+          <option value="manufacturer">Manufacturer name</option>
+          <option value="lowPrice">Lowest price</option>
+          <option value="highPrice">Highest price</option>
         </select>
       </div>
       <div className="bike-cards">

@@ -1,3 +1,4 @@
+// components/AddBike.js
 import React, { useState } from 'react';
 import { addBike } from '../services/BikeService';
 import '../styles/addBike.css';
@@ -7,25 +8,49 @@ const AddBike = ({ onAddBike }) => {
   const [model, setModel] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
-  const [imgUrl, setImgUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (manufacturer && model && price && category && imgUrl) {
+    setError(''); // Clear previous errors
+
+    // Validate inputs
+    if (manufacturer && model && price && category && imageUrl) {
+      // Check if price is a valid number
+      if (isNaN(price) || parseFloat(price) <= 0) {
+        setError('Price must be a valid number greater than 0');
+        return;
+      }
+
       const newBike = {
         manufacturer,
         model,
         price: parseFloat(price),
         category,
-        img_url: imgUrl
+        img_url: imageUrl // Ensure consistency with img_url field name
       };
-      const result = await addBike(newBike);
-      onAddBike(result);
-      setManufacturer('');
-      setModel('');
-      setPrice('');
-      setCategory('');
-      setImgUrl('');
+
+      try {
+        const result = await addBike(newBike);
+
+        if (result && result.error) {
+          setError(result.error); // Display API error
+        } else {
+          onAddBike(result); // Pass the result to the parent component
+          // Clear form fields
+          setManufacturer('');
+          setModel('');
+          setPrice('');
+          setCategory('');
+          setImageUrl('');
+        }
+      } catch (error) {
+        setError('An error occurred while adding the bike');
+        console.error('Error adding bike:', error);
+      }
+    } else {
+      setError('All fields are required');
     }
   };
 
@@ -66,13 +91,14 @@ const AddBike = ({ onAddBike }) => {
           required
         />
         <input
-          type="text"
+          type="url"
           className="input-field"
           placeholder="Image URL"
-          value={imgUrl}
-          onChange={(e) => setImgUrl(e.target.value)}
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
           required
         />
+        {error && <p className="error-message">{error}</p>}  {/* Display error if any */}
         <button type="submit" className="submit-btn">Add Bike</button>
       </form>
     </div>

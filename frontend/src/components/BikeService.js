@@ -1,34 +1,82 @@
-// src/services/BikeService.js
+import React, { useState } from 'react';
+import { addBike } from '../services/BikeService';
+import '../styles/addBike.css';
 
-// Bisiklet verilerini almak
-export const getBikes = async () => {
-  try {
-    const response = await fetch('http://127.0.0.1:5000/bikes');
-    if (response.ok) {
-      return await response.json();
-    } else {
-      throw new Error('Failed to fetch bikes');
+const AddBike = ({ onAddBike }) => {
+  const [manufacturer, setManufacturer] = useState('');
+  const [model, setModel] = useState('');
+  const [price, setPrice] = useState('');
+  const [category, setCategory] = useState('');
+  const [imgUrl, setImgUrl] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (manufacturer && model && price && category && imgUrl) {
+      const newBike = {
+        manufacturer,
+        model,
+        price: parseFloat(price),
+        category,
+        img_url: imgUrl
+      };
+      const result = await addBike(newBike);
+      onAddBike(result);
+      setManufacturer('');
+      setModel('');
+      setPrice('');
+      setCategory('');
+      setImgUrl('');
     }
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+  };
+
+  return (
+    <div className="add-bike-container">
+      <h2>Add a New Bike</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Manufacturer"
+          value={manufacturer}
+          onChange={(e) => setManufacturer(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Model"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          className="input-field"
+          placeholder="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Image URL"
+          value={imgUrl}
+          onChange={(e) => setImgUrl(e.target.value)}
+          required
+        />
+        <button type="submit" className="submit-btn">Add Bike</button>
+      </form>
+    </div>
+  );
 };
 
-// Yeni bisiklet eklemek
-export const addBike = async (newBike) => {
-  try {
-    const response = await fetch('http://127.0.0.1:5000/bikes', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newBike),
-    });
-    if (response.ok) {
-      return await response.json();
-    } else {
-      throw new Error('Failed to add bike');
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
+export default AddBike;

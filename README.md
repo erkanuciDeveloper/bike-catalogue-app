@@ -1,6 +1,6 @@
 # Bike Catalogue App
 
-The Bike Catalogue App is a full-stack web application where users can manage and view a catalogue of bikes. The app features the ability to add new bikes, list them, and sort the list based on different criteria, including price and manufacturer. 
+The Bike Catalogue App is a full-stack web application where users can manage and view a catalogue of bikes. The app features the ability to add new bikes, list them, and sort the list based on different criteria, including price and manufacturer.
 
 This app uses **React.js** for the frontend, **Flask** for the backend, and **MongoDB** as the database for storing bike data.
 
@@ -32,80 +32,94 @@ To run the project locally, you will need the following tools installed:
 - **pip** (Python package manager)
 - **Flask** (for the backend)
 - **Flask-CORS** (for handling cross-origin requests)
-  
+
 ## Installation
 
 ### 1. Backend Setup (Flask)
 
 1. Clone the repository to your local machine:
 
-```bash
-git clone https://github.com/your-username/bike-catalogue-app.git
-cd bike-catalogue-app
-```
+   ```bash
+   git clone https://github.com/erkanuciDeveloper/bike-catalogue-app.git
+   cd bike-catalogue-app
+   ```
 
 2. Navigate to the backend folder:
 
-```bash
-cd backend
-```
+   ```bash
+   cd backend
+   ```
 
 3. Create and activate a virtual environment:
 
-```bash
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On Mac/Linux
-source venv/bin/activate
-```
+   ```bash
+   python -m venv venv
+   # On Windows
+   venv\Scripts\activate
+   # On Mac/Linux
+   source venv/bin/activate
+   ```
 
 4. Install the required Python dependencies:
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 5. Set up the database by connecting MongoDB (ensure MongoDB is running on your local machine or use a cloud MongoDB service like Atlas):
 
-```bash
-# MongoDB connection URI example
-MONGO_URI = "mongodb://localhost:27017/bike-catalogue"
-```
+   ```bash
+   # MongoDB connection URI example
+   MONGO_URI = "mongodb://localhost:27017/bike-catalogue"
+   ```
 
 6. Start the Flask server:
 
-```bash
-flask run
-```
+   ```bash
+   flask run
+   ```
 
 ### 2. Frontend Setup (React.js)
 
 1. Navigate to the frontend folder:
 
-```bash
-cd frontend
-```
+   ```bash
+   cd frontend
+   ```
 
 2. Install required Node.js packages:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. Start the React development server:
 
-```bash
-npm start
-```
+   ```bash
+   npm start
+   ```
 
 This will start the React frontend on `http://localhost:3000`.
+
+## Loading Initial Data into MongoDB
+
+To populate the MongoDB database with initial bike data, follow these steps:
+
+1. Make sure MongoDB is installed and running on your system.
+2. Locate the `bikes.json` file in the project directory.
+3. Use the following `mongoimport` command to load the `bikes.json` file into your MongoDB:
+
+   ```bash
+   mongoimport --db bike_catalogue --collection bikes --file bikes.json --jsonArray
+   ```
+
+   This will create a `bikes` collection in the `bike_catalogue` database with the initial data.
 
 ## Endpoints
 
 - **GET /api/bikes** - Get a list of all bikes in the catalogue.
 - **POST /api/bikes** - Add a new bike to the catalogue. You need to send a JSON object with bike details (manufacturer, model, price, category, and image URL).
-  
+
 Example Bike data (for POST request):
 
 ```json
@@ -128,4 +142,4 @@ Example Bike data (for POST request):
 
 - Price formatting: Ensure the price is provided in `€` format, as the app currently only accepts prices with the euro symbol.
 - MongoDB setup: Ensure that MongoDB is correctly configured and running.
-
+```
